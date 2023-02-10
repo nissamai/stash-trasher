@@ -1,4 +1,5 @@
 export class Unit {
+    /** Unit of measurement, defined rel to SI length (meter)  **/
     name: string;
     meterRatio: number;
 
@@ -6,10 +7,10 @@ export class Unit {
         this.name = name;
         this.meterRatio = meterRatio;
     }
-
 }
 
 export class Measurement {
     quantity: number;
     unit: Unit;
+    isEstimate: boolean;
 }

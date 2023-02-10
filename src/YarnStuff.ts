@@ -1,20 +1,45 @@
-import { Measurement } from "./Measurements";
-import { Shape } from "./Shapes";
+import {Measurement} from "./Measurements";
+import {Shape} from "./Shapes";
 
 export class Work {
     shape: Shape;
+    gauge: Gauge;
+    rows: Row[];
+
+    increaseWidth(): void {
+        throw new Error("NotImplemented");
+    }
+
+    increaseHeight(): void {
+        throw new Error("NotImplemented");
+    }
+
+    increaseAtRatio(): void {
+        throw new Error("NotImplemented");
+    }
 }
 
 export class Gauge {
     yarn: YarnType;
-    stitches_length: Measurement;
-    rows_length: Measurement;
-    stitches_count: number;
-    rows_count: number;
+    stitches_length: Measurement;  // length of gauge
+    rows_total_height: Measurement; // height of gauge
+    rows: Row[];
     needle: Needle;
     pattern: Pattern;
-    stitch: Stitch;
 }
+
+
+export class Row {
+    stitches: Stitch[];
+    length: Measurement;
+    height: Measurement;
+}
+
+export class Stitch {
+    stitchType: StitchType;
+    approx_height: Measurement;
+}
+
 
 export class Needle {
     needleType: NeedleType;
@@ -37,15 +62,25 @@ export class YarnType {
 
 export class Color {
     color: string;
+
     constructor(color: string) {
         this.color = color;
     }
 }
 
 export class Pattern {
+    /** Representation of Object **/
+    rows: Row[];
+    constructor(rows: Row[]) {
+        this.rows = Pattern.reduce(rows);
+    }
 
+    static reduce(rows: Row[]): Row[] {
+        /** Create smallest representation of pattern **/
+        throw Error("NotImplemented");
+    }
 }
 
-export class Stitch {
+export class StitchType {
 
 }
