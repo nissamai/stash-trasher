@@ -3,5 +3,8 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     plugins: ['@typescript-eslint'],
     root: true,
-    ignorePatterns: ['node_modules/**', '**.config.js', 'venv/**', "**.js"]
+    ignorePatterns: ['node_modules/**', '**.config.js', 'venv/**', "**.js"],
+    rules: {
+        semi: ["warn", "always"]
+    }
 }
